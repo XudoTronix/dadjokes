@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "69416890920",
+    "project_id": "dadjokesapp-2bd3c",
+    "storage_bucket": "dadjokesapp-2bd3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69416890920:android:8406f33fcc5f8682193b1d",
+        "android_client_info": {
+          "package_name": "com.example.dadjokes2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "69416890920-oc172t47qak8aemouua21mp9m07c55b4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dadjokes2",
+            "certificate_hash": "69693fe636b86aae25ba4bd3064e9264713d4f60"
+          }
+        },
+        {
+          "client_id": "69416890920-vk1jet2m3ub1njsce8v8f421h4vso356.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5bai64fFbqsp3Qu2lajFT5AAB9ywAbmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "69416890920-vk1jet2m3ub1njsce8v8f421h4vso356.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
