@@ -6,5 +6,10 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="floral_white">#FBFBF2</color>
+    <color name="platinum">#E5E6E4</color>
+    <color name="light_gray">#CFD2CD</color>
+    <color name="quick_silver">#A6A2A2</color>
+    <color name="rocket_metalic">#847577</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

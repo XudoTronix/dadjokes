@@ -1,8 +1,11 @@
 package com.example.dadjokes2.domain.ui.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,33 +26,45 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var adapter: SearchJokeAdapter
 
     private lateinit var rvSearchjokes: RecyclerView
+    private lateinit var getSearchTerm: EditText
+    private lateinit var getSearchButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
+        getSearchButton = findViewById(R.id.showInput)
+        getSearchTerm = findViewById(R.id.editText)
+
         rvSearchjokes = findViewById<RecyclerView>(R.id.rvJoke)
         rvSearchjokes.layoutManager = LinearLayoutManager(this)
         adapter = SearchJokeAdapter(searchjokes, this)
         rvSearchjokes.adapter= adapter
+
+        adapter.onItemClick = {
+            val intent = Intent(this, DetailedSearchActivity::class.java)
+            intent.putExtra("joke", it)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        start(this)
+        getSearchButton.setOnClickListener {
+            start(this, getSearchTerm.text.toString())
+        }
+
+
     }
 
-    fun start(context: Context) {
+    fun start(context: Context, term: String) {
         scope.launch {
 
-            searchjokes = ApiRepository().fetchSearchData(context)
+            searchjokes = ApiRepository().fetchSearchData(context, term)
             Log.d("API-DEMO", searchjokes.size.toString())
-            // Log.d("API-DEMO", universities.toString())
             withContext(Dispatchers.Main) {
                 adapter.Update(searchjokes)
             }
         }
     }
-
-
 }

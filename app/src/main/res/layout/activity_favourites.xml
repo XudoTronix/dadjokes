@@ -10,7 +10,7 @@
         android:layout_width="379dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:text="Your favourite jokes:"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,9 +25,9 @@
         tools:ignore="UnknownIdInLayout">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvJoke"
-            android:layout_width="409dp"
-            android:layout_height="630dp"
+            android:id="@+id/rvFavJoke"
+            android:layout_width="408dp"
+            android:layout_height="656dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

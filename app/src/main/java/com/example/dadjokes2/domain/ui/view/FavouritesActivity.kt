@@ -1,48 +1,82 @@
 package com.example.dadjokes2.domain.ui.view
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dadjokes2.R
-import com.example.dadjokes2.data.ApiRepository
-import com.example.dadjokes2.model.Joke
-import com.example.dadjokes2.domain.ui.viewmodel.SearchJokeAdapter
-import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
+import com.example.dadjokes2.domain.ui.viewmodel.FavouritesAdapter
+import com.example.dadjokes2.model.FavouriteJoke
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentChange
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.QuerySnapshot
 
 class FavouritesActivity : AppCompatActivity() {
 
-    //private val coroutineContext: CoroutineContext = newSingleThreadContext("main")
-    //private val scope = CoroutineScope(coroutineContext)
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var favList: ArrayList<FavouriteJoke>
+    private lateinit var adapter: FavouritesAdapter
+    private lateinit var db: FirebaseFirestore
+
+
+    private val getEmailFirebase = FirebaseAuth.getInstance().currentUser!!.email
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favourites)
 
-        /*rvSearchjokes = findViewById<RecyclerView>(R.id.rvJoke)
-        rvSearchjokes.layoutManager = LinearLayoutManager(this)
-        adapter = SearchJokeAdapter(searchjokes, this)
-        rvSearchjokes.adapter= adapter
-    }
+        recyclerView = findViewById(R.id.rvFavJoke)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-    override fun onStart() {
-        super.onStart()
-        start(this)
-    }
+        favList = arrayListOf()
 
-    fun start(context: Context) {
-        scope.launch {
+        adapter = FavouritesAdapter(favList)
 
-            searchjokes = ApiRepository().fetchSearchData(context)
-            Log.d("API-DEMO", searchjokes.size.toString())
-            // Log.d("API-DEMO", universities.toString())
-            withContext(Dispatchers.Main) {
-                adapter.Update(searchjokes)
-            }
+        recyclerView.adapter = adapter
+
+        eventChangeListener()
+
+        adapter.onItemClick = {
+            val intent = Intent(this, DetailedFavouriteActivity::class.java)
+            intent.putExtra("joke", it)
+            startActivity(intent)
         }
-    }*/
+    }
+
+
+
+
+    private fun eventChangeListener() {
+
+        db = FirebaseFirestore.getInstance()
+        db.collection("favourites").
+            whereEqualTo("email", getEmailFirebase!!).
+            addSnapshotListener(object : EventListener<QuerySnapshot>{
+                override fun onEvent(
+                    value: QuerySnapshot?,
+                    error: FirebaseFirestoreException?
+                ) {
+                    if (error != null){
+                        Log.e("Firestore", error.message.toString())
+                    }
+                    for (dc : DocumentChange in value?.documentChanges!!){
+                        if (dc.type == DocumentChange.Type.ADDED){
+                            val wallItem = dc.document.toObject(FavouriteJoke::class.java)
+                            wallItem.iddoc = dc.document.id
+                            wallItem.id = dc.document["id"].toString()
+                            wallItem.joke = dc.document["joke"].toString()
+                            wallItem.email = dc.document["email"].toString()
+                            favList.add(wallItem)
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+
+            })
     }
 }

@@ -9,12 +9,21 @@
         android:id="@+id/lblJoke"
         android:layout_width="180pt"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/teal_700"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="180pt"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/rocket_metalic"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblJoke" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

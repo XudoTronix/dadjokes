@@ -1,5 +1,6 @@
 package com.example.dadjokes2.model
 
+
 data class SearchJokes (
     val current_page: Int,
     val limit: Int,

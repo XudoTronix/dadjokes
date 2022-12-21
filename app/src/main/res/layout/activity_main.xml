@@ -4,27 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:hapticFeedbackEnabled="false"
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="378dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Do you want a joke?"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/btnLogout"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="660dp"
-        android:layout_marginEnd="132dp"
-        android:text="Logout"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="45dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="340dp"
+        app:icon="@android:drawable/ic_menu_close_clear_cancel"
+        app:iconGravity="end"
+        app:iconTint="#A3000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,39 +26,52 @@
         android:id="@+id/btnToSearchActivity"
         android:layout_width="148dp"
         android:layout_height="52dp"
-        android:layout_marginTop="524dp"
+        android:layout_marginTop="560dp"
         android:layout_marginEnd="132dp"
         android:text="Search"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/btnToFavoriteActivity"
         android:layout_width="148dp"
         android:layout_height="52dp"
-        android:layout_marginTop="592dp"
+        android:layout_marginTop="636dp"
         android:layout_marginEnd="132dp"
         android:text="Favourites"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/btnGenerateJoke"
         android:layout_width="148dp"
         android:layout_height="52dp"
-        android:layout_marginTop="396dp"
+        android:layout_marginTop="480dp"
         android:layout_marginEnd="132dp"
         android:text="New Joke"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/btnAddFavourites"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="460dp"
-        android:layout_marginEnd="132dp"
-        android:text="add fav"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="41dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="372dp"
+        android:layout_marginEnd="184dp"
+        app:icon="@android:drawable/btn_star_big_off"
+        app:iconGravity="textEnd"
+        app:iconPadding="2dp"
+        app:iconTint="#51000000"
+        app:iconTintMode="src_atop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,8 +79,8 @@
         android:id="@+id/jokeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="144dp"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +91,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +99,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.203" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

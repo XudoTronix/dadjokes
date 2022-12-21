@@ -13,8 +13,14 @@ class SearchJokeAdapter(var items: MutableList<Joke>, context: Context) : Recycl
         return SearchJokeViewHolder(view)
     }
 
+    var onItemClick : ((Joke) -> Unit)? = null
+
     override fun onBindViewHolder(holder: SearchJokeViewHolder, position: Int) {
         holder.results.text = items[position].joke
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(items[position])
+        }
     }
 
     override fun getItemCount(): Int {

@@ -1,13 +1,10 @@
 package com.example.dadjokes2.domain.ui.viewmodel
 
-import androidx.annotation.RestrictTo
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.dadjokes2.domain.JokeUseCase
 import com.example.dadjokes2.model.Joke
-import com.google.android.gms.common.api.Scope
 import kotlinx.coroutines.*
 
 class JokeViewModel : ViewModel() {
@@ -16,7 +13,6 @@ class JokeViewModel : ViewModel() {
     val isLoading = MutableLiveData<Boolean>()
 
     var jokeUseCase = JokeUseCase()
-    //var getRandomQuoteUseCase = GetRandomQuoteUseCase()
 
     fun onCreate() {
         viewModelScope.launch {
@@ -29,13 +25,4 @@ class JokeViewModel : ViewModel() {
             }
         }
     }
-
-    /*fun randomQuote() {
-        isLoading.postValue(true)
-        val quote = getRandomQuoteUseCase()
-        if(quote!=null){
-            quoteModel.postValue(quote)
-        }
-        isLoading.postValue(false)
-    }*/
 }
